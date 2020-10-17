@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bounties
+{% endblock %}
+
+{% block body %}
+    <h1>Bounty</h1>
+
+    <form action="{{url_for('blacklist')}}" method="post" enctype=multipart/form-data>
+        <div class="form-group">
+            <input class="form-control" name="name" placeholder="ID">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="title" placeholder="Title">
+        </div>
+    
+        <div class="form-group">
+            <input type="file" name="file">
+        </div>
+
+        <div class="form-group">
+            <textarea name="demands" id="" cols="50" rows="5">List your demands.</textarea>
+        </div>
+
+        <div class="form-group">
+            <input type=submit value=Upload>
+        </div>
+    </form>
+
+{% endblock %}

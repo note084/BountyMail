@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bounties
+{% endblock %}
+
+{% block body %}
+    <h1>Bounties</h1>
+    
+    <div>
+        <a href="{{url_for('blacklist')}}">Post a bounty</a>
+    </div>
+    <div>
+        {% for bounty in bounties %}
+        <h1>{{ bounty[5]}}</h1>
+        <br>
+        <h2>{{ bounty[3] }}</h2>
+        <br>
+        <div>
+            <img src="{{bounty[2]}}" alt="{{photoPath}}">
+        </div>
+        <br>
+        <h3>{{ bounty[4]}}</h3>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
