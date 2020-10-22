@@ -1,0 +1,18 @@
+body, html{
+    height:100%;
+}
+
+.navbg {
+    background: url("bg.jpg");
+    height:50px;
+    background-size: cover;
+}
+.navbar-brand {
+    text-align: center;
+}
+.bg {
+    background: url("bg.jpg");
+    height:100%;
+    background-repeat: repeat-y;
+    background-size: cover
+}

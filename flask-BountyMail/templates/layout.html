@@ -2,12 +2,21 @@
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/layout.css')}}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     </head>
     <body>
-        <div class="container">
-            {% block body %}
-            {% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-light navbg">
+            <a class="navbar-brand mx-auto" href="/">Bounties</a>
+            <div class="nav-item d-flex justify-content-end form-inline">
+                <a href="{{url_for('blacklist')}}">Post a bounty</a>
+            </div>
+        </nav>
+        {% block body %}
+        <div class="bg"></div>
+            <div class="container">
+            </div>
         </div>
+        {% endblock %}
     </body>
 </html>
