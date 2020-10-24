@@ -2,7 +2,7 @@ Alpha development stage for blackMail website
 
 **Octover 23,2020 Update From Backleft:**
 
-Added a run script into the directory ./run-script all it does is build the enviroment just run ./run-script -b
+Added a run script into the directory ./run-script all it does is build the enviroment just run __./run-script -s__
 
 Edited __bounty.py__ on:
 
