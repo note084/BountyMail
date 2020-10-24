@@ -1,5 +1,4 @@
 #!/bin/bash
-
 function usage(){
 	echo  "Usage: "
 	echo  "${1} script is in testing phase "
@@ -18,10 +17,10 @@ if [ ${#} -lt 1 ]; then
 	usage $SCRIPTNAME
 fi 
 
-args=`getopt bs:r:h ${*}`
+args=`getopt bhs ${*}`
 set --$args
 
-#BUFFER=$3
+alias DEST=`cd flask-BountyMail`
 
 while :; do
 	case "${1}" in 
@@ -30,9 +29,14 @@ while :; do
 			exit 1;
 			shift
 			;;
-		-b)#building Flask Env
-			FLASK_APP=bounty flask init
-			FLASK_APP=bounty flask run
+		-s)#starting flask env if env already built
+			cd flask-BountyMail && FLASK_APP=bounty flask init && FLASK_APP=bounty flask run
+			shift
+			;;
+
+		-b)#actually instailing the dependencies
+		        sudo apt update && sudo apt install -y python3 python3-flask python3-virtualenv
+			exit 1;
 			shift
 			;;
 		--)
