@@ -4,7 +4,7 @@ from flask.cli import AppGroup
 from datetime import datetime
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = '/home/brad/Desktop/CPSC-349/Project 1/BountyMail/flask-BountyMail/static'
+UPLOAD_FOLDER = '../flask-BountyMail/static'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
@@ -69,7 +69,7 @@ def readBlobData(bountyID):
         photo = row[1]
         demand = row[3]
 
-        photoPath = "/home/brad/Desktop/CPSC-349/Project 1/BountyMail/flask-BountyMail/static/images/" + str(bountyID) + ".jpg"
+        photoPath = "../flask-BountyMail/static/images/" + str(bountyID) + ".jpg"
         writeToFile(photo, photoPath)
     cur.close()
     conn.close()
@@ -106,7 +106,7 @@ def blacklist():
             return redirect(request.url)
         file = request.files['file']
         if file.filename == '':
-            print("thrid")
+            print("third")
             return redirect(request.url)
         if file and allowed_file(file.filename):
             print("fourth")

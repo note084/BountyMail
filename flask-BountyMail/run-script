@@ -1,0 +1,42 @@
+#!/bin/bash
+
+function usage(){
+	echo  "Usage: "
+	echo  "${1} script is in testing phase "
+	echo  ""
+}
+
+function help(){
+	echo "******HELP*******"
+	echo "Yeah good luck"
+}
+
+
+#### MAIN
+SCRIPTNAME=`basename $0`
+if [ ${#} -lt 1 ]; then 
+	usage $SCRIPTNAME
+fi 
+
+args=`getopt bs:r:h ${*}`
+set --$args
+
+#BUFFER=$3
+
+while :; do
+	case "${1}" in 
+		-h)#Help Menu
+			help ${SCRIPTNAME}
+			exit 1;
+			shift
+			;;
+		-b)#building Flask Env
+			FLASK_APP=bounty flask init
+			FLASK_APP=bounty flask run
+			shift
+			;;
+		--)
+			shift;break
+			;;
+	esac
+done

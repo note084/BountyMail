@@ -6,9 +6,10 @@ body, html{
     background: url("bg.jpg");
     height:50px;
     background-size: cover;
+
 }
 .navbar-brand {
-    text-align: center;
+    text-align: center;   
 }
 .bg {
     background: url("bg.jpg");

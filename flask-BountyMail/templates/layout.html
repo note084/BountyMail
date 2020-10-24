@@ -4,12 +4,13 @@
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/layout.css')}}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light navbg">
-            <a class="navbar-brand mx-auto" href="/">Bounties</a>
+            <a class="navbar-brand mx-auto" href="/">Bounties </a>
             <div class="nav-item d-flex justify-content-end form-inline">
-                <a href="{{url_for('blacklist')}}">Post a bounty</a>
+                <p><a href="{{url_for('blacklist')}}" class="text-dark" class="font-weight-bolder">Post a bounty</a></p>
             </div>
         </nav>
         {% block body %}
