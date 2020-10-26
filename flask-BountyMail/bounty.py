@@ -41,12 +41,12 @@ def convertToBinaryData(filename):
         blobData = file.read()
     return blobData
 
-def insertBLOB(cur, conn, photo, photoPath, title, demand, photoName):
+def insertBLOB(cur, conn, photo, photoPath, demand, photoName, amount):
     
-    insert_blob_query = "INSERT INTO bounty(photo, photoPath, title, demands, photoName) VALUES (?, ?, ?, ?, ?)"
+    insert_blob_query = "INSERT INTO bounty(photo, photoPath, demands, photoName, amount) VALUES (?, ?, ?, ?, ?)"
 
     bountyPhoto = convertToBinaryData(photo)
-    data_tuple = (bountyPhoto, photoPath, title, demand, photoName)
+    data_tuple = (bountyPhoto, photoPath, demand, photoName, amount)
     cur.execute(insert_blob_query, data_tuple)
     conn.commit()
 
@@ -64,8 +64,7 @@ def readBlobData(bountyID):
     cur.execute(fetch_blob_query, (bountyID,))
     record = cur.fetchall()
     for row in record:
-        print("Id = ", row[0], "Name = ", row[1])
-        title = row[2]
+        print("Id = ", row[0], "Name = ", row[4])
         photo = row[1]
         demand = row[3]
 
@@ -99,8 +98,8 @@ def blacklist():
     if request.method == 'POST':
         print("first")
         photoName = request.form.get("name")
-        title = request.form.get("title")
         demands = request.form.get("demands")
+        amount = request.form.get("amount")
         if 'file' not in request.files:
             print("second")
             return redirect(request.url)
@@ -115,8 +114,19 @@ def blacklist():
             photo = UPLOAD_FOLDER + "/"+ filename
             photoPath = path(filename)
             image_file = url_for('static', filename=photoPath)
-            insertBLOB(cur, conn, photo, image_file, title, demands, photoName)
+            insertBLOB(cur, conn, photo, image_file, demands, photoName, amount)
             bounties = cur.execute("SELECT * FROM bounty").fetchall()
-            return render_template("success.html", bounties = bounties, image_file = image_file, photoPath=photoPath)
+            return render_template("index.html", bounties = bounties, image_file = image_file, photoPath=photoPath)
     
     return render_template('post.html')
+
+@app.route('/bounty/<int:bounty_id>')
+def bounty(bounty_id):
+    conn = connectDB(databaseName)
+    cur = conn.cursor()
+
+    bounty = cur.execute("SELECT * from bounty where id = :id", {"id": bounty_id}).fetchone()
+    if bounty is None:
+        return render_template("error.html", message="Bounty not found.")
+
+    return render_template("bounty.html", bounty=bounty)

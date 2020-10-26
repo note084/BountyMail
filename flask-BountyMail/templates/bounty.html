@@ -8,19 +8,19 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container spacing">
+    <div class="container">
         <div class="row">
-        {% for bounty in bounties %}
-            {% if (loop.index - 1) % 2 == 0 and (loop.index-1) != 0 %}
-            <div class="w-100 section"></div>
-            <br>
-            {% endif %}
             <div class="col-sm-5 bountybg spacing">
                 <img src="{{bounty[2]}}" alt="{{photoPath}}">
-                <a href="{{url_for('bounty', bounty_id=bounty[0])}}"><h1 class="name">{{ bounty[4] }}</h1></a>
+                <h1 class="name">{{ bounty[4] }}</h2>
                 <h3 class="amount">${{ bounty[5]}}</h3>
             </div>
-        {% endfor %}
+            <div class="demandtitle">
+                List of Demands
+            </div>
+            <div class="demands">
+                {{ bounty[3]}}
+            </div>
         </div>
 
     </div>
