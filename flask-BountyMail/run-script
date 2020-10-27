@@ -1,0 +1,55 @@
+#!/bin/bash
+function usage(){
+	echo  "${1} "
+	echo  "OPTIONS: "
+	echo  "-h) Will print out the help menu for bountyMail"
+	echo  "-b) Will build/install the dependencies on local machine for the flask applet"
+	echo  "-s) Will start flask app and follow instructions on the screen for preview"
+	echo  "Usage: "
+	echo  "./${1} -h"
+}
+
+function help(){
+	echo "******HELP*******"
+	echo  "${1} will run and build the flask app as follows "
+	echo  "OPTIONS: "
+	echo  "-h) Will print out the help menu for bountyMail"
+	echo  "-b) Will build/install the dependencies on local machine for the flask applet"
+	echo  "-s) Will start flask app and follow instructions on the screen for preview"
+	echo  "EXAMPLE to run: "
+	echo  "./${1} -h"
+}
+
+
+#### MAIN
+SCRIPTNAME=`basename $0`
+if [ ${#} -lt 1 ]; then 
+	usage $SCRIPTNAME
+fi 
+
+args=`getopt bhs ${*}`
+set --$args
+
+while :; do
+	case "${1}" in 
+		-h)#Help Menu
+			help ${SCRIPTNAME}
+			exit 1;
+			shift
+			;;
+		-s)#starting flask env if env already built
+			FLASK_APP=bounty flask init && FLASK_APP=bounty flask run
+			shift
+			;;
+
+		-b)#actually installing the dependencies
+		        sudo apt update && \
+				sudo apt install -y python3 python3-flask python3-virtualenv python3-pip
+			exit 1;
+			shift
+			;;
+		--)
+			shift;break
+			;;
+	esac
+done
