@@ -1,7 +1,7 @@
 # Welcome to Da Hub's BountyMail.
 
 
-# Instructions to run
+# Instructions to run in docker if you don't want to install dependencies on local machine
 
 1. Clone this repo to any directory
 
@@ -16,6 +16,7 @@
 	d)for Linux/Ubuntu : "Directory where you saved the repo"/BountyMail && cd flask-BountyMail && code .
 
 3. Select the option to "ReOpen this folder in container" to start the docker container.
+	Optionally used this key combination: ctrl + shift + p. Then select option remote containers. Then select "reopen this container".
 
 4. Once running complete by running the run script with the following commands or actions:
 
