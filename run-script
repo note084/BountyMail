@@ -30,7 +30,7 @@ while :; do
 			shift
 			;;
 		-s)#starting flask env if env already built
-			cd flask-BountyMail && FLASK_APP=bounty flask init && FLASK_APP=bounty flask run
+			FLASK_APP=bounty flask init && FLASK_APP=bounty flask run
 			shift
 			;;
 

@@ -1,44 +1,37 @@
-Alpha development stage for blackMail website
-
-**Octover 23,2020 Update From Backleft:**
-
-Added a run script into the directory ./run-script all it does is build the enviroment just run __./run-script -s__
-
-Edited __bounty.py__ on:
-
-__line 7__: changed the Upload Folder path to be relative to whoever pulls the repo
-
-__line 72__: Also changed the photoPath to be relative as well.
-
-Edited on __index.html__:
-
-only worked on trying to get the grid system to work but I didn't make much headway so what I put in there is negligable.
-
-Edited __layout.html__ && layout.css: 
-
-just added some styling to the files but I don't think any of them really work so you can ignore them.
+# Welcome to Da Hub's BountyMail.
 
 
-# Thats all I did I'll also version control this and the previous version
+# Instructions to run
+
+1. Clone this repo to any directory
+
+2. Open this code in VScode using a terminal of choice type or copy and paste:
+
+	a)for Windows Command Prompt: cd "Directory where you saved the repo"\BountyMail && cd flask-BountyMail && code .
+	
+	b)for Windows PowerShell: "Directory where you saved the repo"\BountyMail; flask-BountyMail; code .
+
+ 	c)for MacOs :  "Directory where you saved the repo"/BountyMail && cd flask-BountyMail && code .
+
+	d)for Linux/Ubuntu : "Directory where you saved the repo"/BountyMail && cd flask-BountyMail && code .
+
+3. Select the option to "ReOpen this folder in container" to start the docker container.
+
+4. Once running complete by running the run script with the following commands or actions:
+
+	"Sorry windows users gotta run it the hard way by right clicking the script and select run"
+	MacOs: ./run-script -s
+	Linux/Ubuntu: ./run-script -s
+
+Optionally: if this is the first time you are running the program you will need to run
+		./run-script -b
+
+to install the python dependencies
 
 
-#########################################################################
-October 13,2020 UPDATE From BackLeft:
-Started writing flask python scripts under the directory called flask-BountMail
-
-	new file:   create_db.py
-	new file:   main.py
-	new file:   requirements.txt
-	new file:   settings.py
-
-Also deleted the apache & php folders since they aren't needed anymore.
-
-we can still deploy this using docker since its easy to run with scripts 
-
-###########################################################################
+After the prompt is running just open a browser and voila you can run BountyMail!
 
 
-October 11,2020 update
-Pushed potential containers to github and .gitignore
+__still updating but is functional__
 
-###########################################################################
+
